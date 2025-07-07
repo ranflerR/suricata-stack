@@ -1,0 +1,96 @@
+{
+  "__inputs": [],
+  "__requires": [],
+  "annotations": {
+    "list": [
+      {
+        "builtIn": 1,
+        "datasource": "-- Grafana --",
+        "enable": true,
+        "hide": true,
+        "iconColor": "rgba(0, 211, 255, 1)",
+        "name": "Annotations & Alerts",
+        "type": "dashboard"
+      }
+    ]
+  },
+  "description": "Dashboard básico para monitorar eventos do Suricata",
+  "editable": true,
+  "gnetId": null,
+  "graphTooltip": 0,
+  "id": null,
+  "links": [],
+  "panels": [
+    {
+      "datasource": "Elasticsearch",
+      "fieldConfig": {
+        "defaults": {},
+        "overrides": []
+      },
+      "gridPos": {
+        "h": 8,
+        "w": 12,
+        "x": 0,
+        "y": 0
+      },
+      "id": 1,
+      "options": {
+        "showHeader": true,
+        "showLines": true,
+        "showPoints": "auto",
+        "showValues": true,
+        "sortBy": [
+          {
+            "desc": true,
+            "displayName": "@timestamp"
+          }
+        ]
+      },
+      "pluginVersion": "9.0.0",
+      "targets": [
+        {
+          "bucketAggs": [
+            {
+              "field": "@timestamp",
+              "id": "1",
+              "settings": {},
+              "type": "date_histogram"
+            }
+          ],
+          "metrics": [
+            {
+              "field": "event_type",
+              "id": "1",
+              "settings": {
+                "field": "event_type",
+                "size": 5,
+                "order": "desc",
+                "orderBy": "_count"
+              },
+              "type": "top_hits"
+            }
+          ],
+          "query": "*",
+          "refId": "A"
+        }
+      ],
+      "title": "Eventos recentes do Suricata",
+      "type": "table"
+    }
+  ],
+  "schemaVersion": 36,
+  "style": "dark",
+  "tags": ["suricata", "security"],
+  "templating": {
+    "list": []
+  },
+  "time": {
+    "from": "now-6h",
+    "to": "now"
+  },
+  "timepicker": {},
+  "timezone": "",
+  "title": "Suricata Dashboard",
+  "uid": "suricata-dashboard",
+  "version": 1
+}
