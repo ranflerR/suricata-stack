@@ -50,13 +50,19 @@ docker compose up -d
 
 ## 🗂️ Estrutura do Projeto
 
-```
-.
-├── docker-compose.yml        # Definição dos containers
-├── suricata/                 # Configurações do Suricata (rules, configs)
-├── filebeat/                 # Configuração do Filebeat para envio dos logs
-└── grafana/                  # Configurações do Grafana, dashboards e datasources
-```
+suricata-stack/
+├── docker-compose.yml
+├── suricata/
+│   └── suricata.yaml        # Config do Suricata
+├── filebeat/
+│   └── filebeat.yml         # Config do Filebeat
+├── grafana/
+│   └── provisioning/
+│       ├── datasources/
+│       │   └── datasource.yml
+│       └── dashboards/
+│           └── dashboard.json
+
 
 ---
 
